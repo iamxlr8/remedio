@@ -1,0 +1,202 @@
+body{
+	margin: 0;
+	padding: 0;
+	background:url(wallpapersden.com_forest-minimal_1920x1080.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	font-family: 'Modern Antiqua', cursive;
+}
+
+
+.lform{
+	background: rgba(0, 0, 0,0.8);
+	color: #fff;
+	height: 320px;
+	width: 400px;
+	top: 40%;
+	left: 25%;
+	
+	position: absolute;
+	transform: translate(-50%,-50%);
+	box-sizing: border-box;
+	font-family: 'Modern Antiqua', cursive;
+	padding: 60px 50px;
+	-webkit-transition: box-shadow 1s;
+}
+
+
+
+.avatar1{
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	top: -40px;
+	left:50% ;
+	transform: translate(-50%,0);
+}
+
+.lform input{
+	width:100%;
+	margin-bottom: 20px;
+}
+
+.lform input[type="text"],input[type="password"]{
+	border:none;
+	font-family: sans-serif;
+	border-bottom: 1px solid #fff;
+	background: transparent;
+	outline:none;
+	height: 25px;
+	font-size: 15px;
+	color: #fff;
+}
+
+.lform input[type="submit"]{
+	outline:none;
+	border: none;
+	background: #E41A26;
+	height: 30px;
+	color:#fff;
+	font-size: 18px;
+	font-family: 'Modern Antiqua', cursive;
+	border-radius: 20px;
+}
+
+.lform input[type="submit"]:hover{
+	cursor: pointer;
+	color:#000;
+	background-color: #fb2;
+}
+
+.lform input[type="text"]:focus, .lform input[type="text"]:hover{
+	border-bottom: 1px solid #fb2;
+}
+
+.lform input[type="password"]:focus, .lform input[type="password"]:hover{
+	border-bottom: 1px solid #fb2;
+}
+
+.lform a{
+	text-decoration: none;
+	color: #848484;
+	line-height: 20px;
+	font-size: 13px;
+}
+
+.lform a:hover{
+	color:#fb2;
+}
+
+#title{
+	text-align: center;
+	font-size:20px; 
+}
+
+
+
+
+
+
+.sform{
+	background: rgba(0, 0, 0,0.8);
+	color: #fff;
+	height: 500px;
+	width: 400px;
+	top: 50%;
+	left: 75%;
+	
+	position: absolute;
+	transform: translate(-50%,-50%);
+	box-sizing: border-box;
+	font-family: 'Modern Antiqua', cursive;
+	padding: 60px 50px;
+	-webkit-transition: box-shadow 1s;
+}
+
+.avatar2{
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	top: -40px;
+	left:40% ;
+}
+
+
+.sform input{
+	width:100%;
+	margin-bottom: 20px;
+}
+
+.sform input[type="text"],input[type="email"],input[type="password"]{
+	border:none;
+	font-family: sans-serif;
+	border-bottom: 1px solid #fff;
+	background: transparent;
+	outline:none;
+	height: 25px;
+	font-size: 15px;
+	color: #fff;
+}
+
+.sform input[type="submit"]{
+	outline:none;
+	border: none;
+	background: #E41A26;
+	height: 30px;
+	
+	color:#fff;
+	font-size: 18px;
+	font-family: 'Modern Antiqua', cursive;
+	border-radius: 20px;
+}
+
+.sform input[type="submit"]:hover{
+	cursor: pointer;
+	color:#000;
+	background-color: #fb2;
+}
+
+.sform input[type="text"]:focus, .sform input[type="text"]:hover{
+	border-bottom: 1px solid #fb2;
+}
+
+.sform input[type="password"]:focus, .sform input[type="password"]:hover{
+	border-bottom: 1px solid #fb2;
+}
+
+.sform a{
+	text-decoration: none;
+	color: #848484;
+	line-height: 20px;
+	font-size: 13px;
+}
+
+.sform a:hover{
+	color:#fb2;
+}
+
+.top-row > div {
+  float: left;
+  width: 48%;
+  margin-right: 4%;
+}
+
+.top-row > div:last-child {
+  margin: 0;
+}
+
+.sform input[type="radio"]{
+	width:20%;
+	display: block-inline;
+}
+
+.sform input[type="date"]{
+	font-family:'Modern Antiqua', cursive;
+	color:#fff;
+	background:transparent;
+
+}
+
+.sform input[type="date"]:hover{
+	color:#fb2;
+}

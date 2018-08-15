@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'remedio.apps.RemedioConfig',
     'remedio'
 ]
 
@@ -123,5 +122,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-     STATIC_DIR,
+    STATIC_DIR,
 ]
