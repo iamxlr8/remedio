@@ -21,5 +21,5 @@ from remedio import views
 urlpatterns = [
 	path('',views.hello,name='hello'),
 	path('remedio/',include('remedio.urls')),
-    path('admin/', admin.site.urls),
+  path('admin/', admin.site.urls),
 ]
