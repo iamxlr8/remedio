@@ -5,9 +5,14 @@
 	<title>Remedio</title>
 	<link href="https://fonts.googleapis.com/css?family=Modern+Antiqua" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="{% static "css/remedio.css" %}"/>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script>function sign(){
         document.getElementById('lfor').style.transform="translate(-50%,-50%) rotateX(-180deg)";
         document.getElementById('sfor').style.transform="translate(-50%,-50%) rotateX(0deg)";
+    }
+    function log(){
+        document.getElementById('lfor').style.transform="translate(-50%,-50%) rotateX(0deg)";
+        document.getElementById('sfor').style.transform="translate(-50%,-50%) rotateX(180deg)";
     }
     </script>
 </head>
@@ -27,6 +32,8 @@
 	    <div class="sform" id="sfor">
 		    <img src="{% static "images/login.png" %}" class="avatar2"/>
 		    <h3 id="title">Sign Up</h3>
+            <button class="log" onclick="log()"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+</button>
 		    <form method='POST'>
 			    <div class="top-row">
                 <div class="field-wrap">
@@ -45,7 +52,6 @@
 			    </div>
 			    DOB:<input type="date" required ="true" min="0001-01-01" max="9999-12-31">
 			    <input type="submit" value="Get Started">
-			
 		    </form>
 	    </div>
     </div>
