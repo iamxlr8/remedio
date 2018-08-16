@@ -6,25 +6,35 @@ body{
 	background-repeat: no-repeat;
 	font-family: 'Modern Antiqua', cursive;
 }
-
+.card{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    transform-style: preserve-3d;
+    perspective: 500px;
+    transition: 0.5s;
+}
 
 .lform{
 	background: rgba(0, 0, 0,0.8);
 	color: #fff;
-	height: 320px;
+	height: 500px;
 	width: 400px;
-	top: 40%;
-	left: 25%;
-	
+	top: 50%;
+	left: 50%;
+	backface-visibility: hidden;
 	position: absolute;
-	transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%) rotateX(0deg);
 	box-sizing: border-box;
 	font-family: 'Modern Antiqua', cursive;
 	padding: 60px 50px;
-	-webkit-transition: box-shadow 1s;
+    transition:0.5s;
 }
 
-
+/*.card:hover .lform{
+    transform:translate(-50% ,-50%) rotateX(-180deg);
+}*/
 
 .avatar1{
 	width: 80px;
@@ -61,7 +71,23 @@ body{
 	font-family: 'Modern Antiqua', cursive;
 	border-radius: 20px;
 }
-
+.lform button{
+	outline:none;
+	border: none;
+	background: #E41A26;
+	height: 30px;
+	color:#fff;
+	font-size: 18px;
+	font-family: 'Modern Antiqua', cursive;
+	border-radius: 20px;
+    width:100%;
+    margin:20px 20px 20px 0;
+}
+.lform button:hover{
+    cursor: pointer;
+	color:#000;
+	background-color: #fb2;
+}
 .lform input[type="submit"]:hover{
 	cursor: pointer;
 	color:#000;
@@ -103,16 +129,18 @@ body{
 	height: 500px;
 	width: 400px;
 	top: 50%;
-	left: 75%;
-	
+	left: 50%;
+	backface-visibility: hidden;
 	position: absolute;
-	transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%) rotateX(180deg);
 	box-sizing: border-box;
 	font-family: 'Modern Antiqua', cursive;
 	padding: 60px 50px;
-	-webkit-transition: box-shadow 1s;
+    transition:0.5s;
 }
-
+/*.card:hover .sform{
+    transform:translate(-50% ,-50%) rotateX(0deg);
+}*/
 .avatar2{
 	width: 80px;
 	height: 80px;

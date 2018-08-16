@@ -5,42 +5,49 @@
 	<title>Remedio</title>
 	<link href="https://fonts.googleapis.com/css?family=Modern+Antiqua" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="{% static "css/remedio.css" %}"/>
+    <script>function sign(){
+        document.getElementById('lfor').style.transform="translate(-50%,-50%) rotateX(-180deg)";
+        document.getElementById('sfor').style.transform="translate(-50%,-50%) rotateX(0deg)";
+    }
+    </script>
 </head>
 <body>
-	
-	<div class="lform">
-		<img src="{% static "images/login.png" %}" class="avatar1"/>
-		<h3 id="title">Login</h3>
-		<form method='POST'>
-			<input type="text" name="u_name" placeholder="Username" required="true"><br>
-			<input type="password" name="passwd" placeholder="Password" required="true"><br>
-			<input type="submit" value="Login"><br>
-			<a href="#">Forgot Password</a><br>
-		</form>
-	</div>
-	<div class="sform">
-		<img src="{% static "images/login.png" %}" class="avatar2"/>
-		<h3 id="title">Sign Up</h3>
-		<form method='POST'>
-			<div class="top-row">
-            <div class="field-wrap">
-              <input type="text" placeholder="First Name" required="true" />
-            </div>
+	<div class="card">
+        <div class="lform" id="lfor">
+            <img src="{% static "images/login.png" %}" class="avatar1"/>
+		    <h3 id="title">Login</h3>
+		    <form method='POST'>
+			    <input type="text" name="u_name" placeholder="Username" required="true"><br>
+			    <input type="password" name="passwd" placeholder="Password" required="true"><br>
+			    <input type="submit" value="Login"><br>
+			    <a href="#">Forgot Password</a><br>
+                <button  class="sign" onclick="sign()">Sign Up</button>
+		    </form>
+	    </div>
+	    <div class="sform" id="sfor">
+		    <img src="{% static "images/login.png" %}" class="avatar2"/>
+		    <h3 id="title">Sign Up</h3>
+		    <form method='POST'>
+			    <div class="top-row">
+                <div class="field-wrap">
+                <input type="text" placeholder="First Name" required="true" />
+                </div>
         
-            <div class="field-wrap">
-              <input type="text" placeholder="Last Name" required="true"/>
-            </div>
-          	</div><br>
-          	<input type="text" name="" placeholder="Username" required="true"><br>
-			<input type="email" name="" placeholder="Email" required="true"><br>
-			<input type="password" name="" placeholder="Password" required="true"><br>
-			<div class="sex">
-			Sex:<input type="radio" name="sex" value="male">Male<input type="radio" name="sex" value="female">Female
-			</div>
-			DOB:<input type="date" required ="true" min="0001-01-01" max="9999-12-31">
-			<input type="submit" value="Get Started">
+                <div class="field-wrap">
+                <input type="text" placeholder="Last Name" required="true"/>
+                </div>
+          	    </div><br>
+          	    <input type="text" name="" placeholder="Username" required="true"><br>
+			    <input type="email" name="" placeholder="Email" required="true"><br>
+			    <input type="password" name="" placeholder="Password" required="true"><br>
+			    <div class="sex">
+			    Sex:<input type="radio" name="sex" value="male">Male<input type="radio" name="sex" value="female">Female
+			    </div>
+			    DOB:<input type="date" required ="true" min="0001-01-01" max="9999-12-31">
+			    <input type="submit" value="Get Started">
 			
-		</form>
-	</div>
+		    </form>
+	    </div>
+    </div>
 </body>
 </html>
