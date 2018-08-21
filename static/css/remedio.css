@@ -12,8 +12,8 @@ body{
     left:50%;
     transform:translate(-50%,-50%);
     transform-style: preserve-3d;
-    perspective: 600px;
-    transition: 0.5s;
+    perspective: 800px;
+    transition: 1s;
 }
 
 .lform{
@@ -29,7 +29,7 @@ body{
 	box-sizing: border-box;
 	font-family: 'Modern Antiqua', cursive;
 	padding: 60px 50px;
-    transition:0.5s;
+    transition:1s;
 }
 
 /*.card:hover .lform{
@@ -136,7 +136,7 @@ body{
 	box-sizing: border-box;
 	font-family: 'Modern Antiqua', cursive;
 	padding: 60px 50px;
-    transition:0.5s;
+    transition:1s;
 }
 /*.card:hover .sform{
     transform:translate(-50% ,-50%) rotateX(0deg);
@@ -188,7 +188,7 @@ body{
 	border: none;
 	background: #E41A26;
 	height: 30px;
-	
+
 	color:#fff;
 	font-size: 18px;
 	font-family: 'Modern Antiqua', cursive;
@@ -232,7 +232,7 @@ body{
 
 .sform input[type="radio"]{
 	width:20%;
-	display: block-inline;
+	display: inline-block;
 }
 
 .sform input[type="date"]{
@@ -244,4 +244,19 @@ body{
 
 .sform input[type="date"]:hover{
 	color:#fb2;
+}
+
+.sform .sex ul{list-style-type: none;
+    position: absolute;
+	margin: 0;
+    padding: 0;
+	display: inline-flex;
+	bottom:130px;
+    overflow: hidden;}
+
+.sform .sex ul li{
+	float: left;
+}
+.sform .sex{
+	margin:20px 20px 20px 0;
 }

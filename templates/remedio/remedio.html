@@ -21,9 +21,12 @@
         <div class="lform" id="lfor">
             <img src="{% static "images/login.png" %}" class="avatar1"/>
 		    <h3 id="title">Login</h3>
-		    <form method='POST'>
-			    <input type="text" name="u_name" placeholder="Username" required="true"><br>
-			    <input type="password" name="passwd" placeholder="Password" required="true"><br>
+		    <form method='POST' action="/remedio/loggedin/">
+                {% csrf_token %}
+                {{ form1.u_name }}
+                {{ form1.passwd }}
+			    <!--<input type="text" name="u_name" placeholder="Username" required="true"><br>
+			    <input type="password" name="passwd" placeholder="Password" required="true"><br>-->
 			    <input type="submit" value="Login"><br>
 			    <a href="#">Forgot Password</a><br>
                 <button  class="sign" onclick="sign()">Sign Up</button>
@@ -35,22 +38,28 @@
             <button class="log" onclick="log()"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
 </button>
 		    <form method='POST'>
-			    <div class="top-row">
+                {% csrf_token %}
+		    <div class="top-row">
                 <div class="field-wrap">
-                <input type="text" placeholder="First Name" required="true" />
+                    {{ form2.first_name }}
+                    {#  <input type="text" placeholder="First Name" required="true" />#}
                 </div>
-        
-                <div class="field-wrap">
-                <input type="text" placeholder="Last Name" required="true"/>
+
+               <div class="field-wrap">
+                   {{ form2.last_name }}
+                {#  <input type="text" placeholder="Last Name" required="true"/>#}
                 </div>
           	    </div><br>
-          	    <input type="text" name="" placeholder="Username" required="true"><br>
+          	    {{ form2.username }}
+                {{ form2.email }}
+                {{ form2.password }}
+                <!-- <input type="text" name="" placeholder="Username" required="true"><br>
 			    <input type="email" name="" placeholder="Email" required="true"><br>
-			    <input type="password" name="" placeholder="Password" required="true"><br>
+			    <input type="password" name="" placeholder="Password" required="true"><br>-->
 			    <div class="sex">
-			    Sex:<input type="radio" name="sex" value="male">Male<input type="radio" name="sex" value="female">Female
+                    Sex:{{ form2.sex}}
 			    </div>
-			    DOB:<input type="date" required ="true" min="0001-01-01" max="9999-12-31">
+			    DOB:{{ form2.dob }}
 			    <input type="submit" value="Get Started">
 		    </form>
 	    </div>
