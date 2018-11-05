@@ -19,6 +19,6 @@ from django.conf.urls import url
 from remedio import views
 
 urlpatterns = [
-	path('',include('remedio.urls')),
-  path('admin/', admin.site.urls),
+	url(r'^',include('remedio.urls')),
+  url(r'^admin/', admin.site.urls),
 ]

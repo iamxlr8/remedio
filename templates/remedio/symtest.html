@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>symtest</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+
+</head>
+<body>
+        these symptoms are also there?
+        {{ n }}
+        {% for i in l%}
+        <br>
+        {{ i }}
+        {% endfor %}
+        <form method="post" action="/medication/">
+            {% csrf_token %}
+            <input type="hidden" id="dis" name="disease" value={{ n }}>
+            <input type="submit" value="yes">
+        </form>
+        {% if buses.has_other_pages %}
+        <div style="position:fixed;bottom:40px;right:10px">
+  <ul class="pagination">
+    {% if buses.has_previous %}
+      <li><a href="?page={{ buses.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in buses.paginator.page_range %}
+      {% if buses.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if buses.has_next %}
+      <li><a href="?page={{ buses.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+  </div>
+{% endif %}
+</body>
+</html>

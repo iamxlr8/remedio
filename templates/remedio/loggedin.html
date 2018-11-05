@@ -3,10 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script>
+        num=1
+        function addsym() {
+            this.num=this.num+1;
+            document.getElementById('num').value=this.num;
+            if(this.num==2)
+            {document.getElementById('sym2').style.visibility='visible'}
+            if(this.num==3)
+            {document.getElementById('sym3').style.visibility='visible'}
+            if(this.num==4)
+            {document.getElementById('sym4').style.visibility='visible'}
+            if(this.num==5)
+            {document.getElementById('sym5').style.visibility='visible'}
+            console.log(num)
+        }
+    </script>
 </head>
 <body>
-    {% csrf_token %}
-    {{ uname }}<br>
-    {{ passwd }}
+    <form method="post" action="/symtest/">
+        {% csrf_token %}
+        {{ symform.as_p }}
+        <button onclick="addsym()" type="button">+</button>
+        <input type="submit" value="check">
+    </form>
 </body>
 </html>

@@ -1,29 +1,144 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from remedio.forms import logform,signform
-
+from remedio.forms import *
+from django.contrib.auth import *
+from remedio.models import *
+from functools import reduce
+import operator
+from django.db.models import Q
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
+from django.db import connection
 # Create your views here.
 def hello(request):
 	return HttpResponse("HELLO!! Go to /remedio/ for further processes.")
 
 
 def index(request):
-    form1=logform()
-    form2=signform()
-    return render(request,'remedio/remedio.html',{'form1':form1,'form2':form2})
+    if request.user.is_authenticated:
+        return redirect('/loggedin/')
+    if request.method == 'POST':
+        username = request.POST.get('u_name')
+        password = request.POST.get('passwd')
+        user = authenticate(username=username, password=password)
+        if user:
+            if user.is_active:
+                login(request, user)
+                return redirect('/loggedin/')
+            else:
+                return HttpResponse("Your Rango account is disabled.")
+        else:
+            print("Invalid login details: {0}, {1}".format(username, password))
+            return HttpResponse("Invalid login details supplied.")
+    else:
+        form1=logform()
+        form2=signform()
+        form3=signform2()
+        return render(request,'remedio/remedio.html',{'form1':form1,'form2':form2,'form3':form3})
 
+@login_required(login_url="/index/")
 def loggedin(request):
-    if request.method=='POST':
-        form1=logform(request.POST)
-        if form1.is_valid():
-            uname=form1.cleaned_data['u_name']
-            passwd=form1.cleaned_data['passwd']
-            return render(request,'remedio/loggedin.html',{'uname':uname,'passwd':passwd})
+    symfor=symform()
+    return render(request,'remedio/loggedin.html',{'symform':symfor})
 
 def signedup(request):
     if request.method=='POST':
-        form2=signform(request.POST)
-        if form2.is_valid():
-            fname=form1.cleaned_data['first_name']
-            lname=form1.cleaned_data['last_name']
-            return render(request,'remedio/signedup.html',{'fname':fname,'lname':lname})
+        form2=signform(data=request.POST)
+        form3=signform2(data=request.POST)
+        if form2.is_valid() and form3.is_valid():
+            user = form2.save()
+            user.set_password(user.password)
+            user.save()
+            profile = form3.save(commit=False)
+            profile.user = user
+            profile.save()
+        else:
+            print(form2.errors, form3.errors)
+    form11 = logform()
+    form12 = signform()
+    form13 = signform2()
+    return render(request,'remedio/remedio.html',{'form1':form11,'form2':form12,'form3':form13})
+
+n=0
+diss=[]
+
+@login_required(login_url="/index/")
+def symtest(request):
+    if request.method=='POST':
+        global n
+        global diss
+        n=int(request.POST.get('number'))
+        symptoms=[]
+        for i in range(1,n+1):
+            symptoms.append(request.POST.get('sym'+str(i)))
+        n=str(n)
+        query = reduce(operator.or_, (Q(symptom=item) for item in symptoms))
+        symids = Symp.objects.filter(query)
+        diss=[[] for _ in range(len(symids))]
+        i=-1
+        for id in symids:
+            i+=1
+            for dis in Relate.objects.filter(symid=id.symid):
+                diss[i].append(dis.disid)
+        disease=Relate.objects.all()
+        for i in diss:
+            query = reduce(operator.or_, (Q(disid=item) for item in i))
+            disease=disease.filter(query)
+        diss=[]
+        for i in disease:
+            x=int(i.disid.disid)
+            if x not in diss:
+                diss.append(int(x))
+        page = request.GET.get('page', 1)
+
+        paginator = Paginator(diss, 1)
+        try:
+            disses = paginator.page(page)
+        except PageNotAnInteger:
+            disses = paginator.page(1)
+        except EmptyPage:
+            disses = paginator.page(paginator.num_pages)
+        print(type(disses))
+        for i in disses:
+            n1 = str(i)
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT symptom FROM symp WHERE symid IN (SELECT symid FROM relate WHERE disid= %s )",[str(i)])
+                symp=cursor.fetchall()
+        return render(request,'remedio/symtest.html',{'n':n1,'l':symp,'buses':disses})
+    else:
+        global n
+        global diss
+        if n == 0:
+            return HttpResponse("Please enter the symptoms")
+        page = request.GET.get('page', 1)
+
+        paginator = Paginator(diss, 1)
+        try:
+            disses = paginator.page(page)
+        except PageNotAnInteger:
+            disses = paginator.page(1)
+        except EmptyPage:
+            disses = paginator.page(paginator.num_pages)
+        print(type(disses))
+        for i in disses:
+            n1 = str(i)
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT symptom FROM symp WHERE symid IN (SELECT symid FROM relate WHERE disid= %s )",
+                               [str(i)])
+                symp = cursor.fetchall()
+        return render(request, 'remedio/symtest.html', {'n': n1, 'l': symp, 'buses': disses})
+
+@login_required(login_url="/index/")
+def medication(request):
+    if request.method=="POST":
+        disid=str(request.POST.get('disease'))
+        # return HttpResponse(disid)
+        #disid=int(disid)
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT disease FROM dis WHERE disid = %s ",[disid])
+            dis1 = cursor.fetchall()
+            cursor.execute("SELECT medicine FROM sympdis WHERE id = %s",[disid])
+            med1 =cursor.fetchall()
+
+        return render(request, 'remedio/medication.html', {'n':disid, 'l':dis1 , 'p':med1})
