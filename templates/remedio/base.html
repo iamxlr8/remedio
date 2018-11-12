@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Siimple - Free Bootstrap 3 Landing Page</title>
+  <title></title>
 
   <!-- Bootstrap -->
   <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
@@ -37,8 +37,8 @@
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">home</a></li>
-          <li><a href="#">logout</a></li>
+          <li><a href="{% url "remedio:home" %}">Home</a></li>
+          <li><a href="{% url "remedio:loggedout" %}">Logout</a></li>
         </ul>
       </div>
       <!--/.nav-collapse -->
@@ -60,11 +60,11 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <p class="copyright">&copy; Siimple Theme</p>
+          <p class="copyright">&copy; Remedio R&D</p>
         </div>
         <div class="col-md-6">
           <div class="credits">
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            Designed by <a href="https://bootstrapmade.com/">amber082  iamxlr8</a>
           </div>
         </div>
       </div>

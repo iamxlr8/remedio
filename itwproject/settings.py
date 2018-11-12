@@ -81,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'remedio',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': 'sherlocked',
         'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }

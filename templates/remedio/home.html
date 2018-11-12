@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends "remedio/base.html" %}
+<html lang="en">
+{% block head_block %}
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+
+{% endblock %}
+{% block body_block %}
+    <form method="get" action="/loggedin/">
+      <input type="submit" value="New Prescription">
+    </form>
+    <form method="get" action="/prevpres/">
+      <input type="submit" value="Previous Prescription">
+    </form>
+{% endblock %}
+</html>
