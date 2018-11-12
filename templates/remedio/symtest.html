@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+{% extends "remedio/base.html" %}
 <html lang="en">
-<head>
+{% block head_block %}
     <meta charset="UTF-8">
     <title>symtest</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
 
-</head>
-<body>
+{% endblock %}
+{% block body_block %}
         these symptoms are also there?
         {{ n }}
         {% for i in l%}
@@ -21,6 +22,7 @@
         </form>
         {% if buses.has_other_pages %}
         <div style="position:fixed;bottom:40px;right:10px">
+        <div class="pag">
   <ul class="pagination">
     {% if buses.has_previous %}
       <li><a href="?page={{ buses.previous_page_number }}">&laquo;</a></li>
@@ -39,8 +41,8 @@
     {% else %}
       <li class="disabled"><span>&raquo;</span></li>
     {% endif %}
-  </ul>
+  </ul></div>
   </div>
 {% endif %}
-</body>
+{% endblock %}
 </html>

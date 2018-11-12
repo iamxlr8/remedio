@@ -1,6 +1,7 @@
 <!DOCTYPE html>
+{% extends "remedio/base.html" %}
 <html lang="en">
-<head>
+{% block head_block %}
     <meta charset="UTF-8">
     <title>Title</title>
     <script>
@@ -19,13 +20,13 @@
             console.log(num)
         }
     </script>
-</head>
-<body>
+{% endblock %}
+{% block body_block %}
     <form method="post" action="/symtest/">
         {% csrf_token %}
         {{ symform.as_p }}
         <button onclick="addsym()" type="button">+</button>
         <input type="submit" value="check">
     </form>
-</body>
+{% endblock %}
 </html>
