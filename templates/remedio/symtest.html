@@ -18,7 +18,7 @@
         <form method="post" action="/medication/">
             {% csrf_token %}
             <input type="hidden" id="dis" name="disease" value={{ n }}>
-            <input type="submit" value="yes">
+            <input type="submit" value="YES">
         </form>
         {% if buses.has_other_pages %}
         <div style="position:fixed;bottom:40px;right:10px">

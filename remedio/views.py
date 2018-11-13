@@ -10,6 +10,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.db import connection
+from datetime import datetime
 # Create your views here.
 
 
@@ -25,7 +26,7 @@ def index(request):
                 login(request, user)
                 return redirect('/home/')
             else:
-                return HttpResponse("Your Rango account is disabled.")
+                return HttpResponse("Your Remedio account is disabled.")
         else:
             print("Invalid login details: {0}, {1}".format(username, password))
             return HttpResponse("Invalid login details supplied.")
@@ -41,7 +42,16 @@ def home(request):
 
 @login_required(login_url="/index/")
 def prevpres(request):
-	return HttpResponse("Hello")
+	info=Presc.objects.filter(uid=request.user.id)
+	date,medicine,disease=[],[],[]
+	for i in info:
+		date.append(i.date)
+		dis1=Dis.objects.get(disid=i.disid)
+		med1=Sympdis.objects.get(disid=i.disid)
+		disease.append(dis1.disease)
+		medicine.append(med1.medicine)
+		print(request.user.first_name)
+	return render(request,'remedio/prevpres.html',{'fname':request.user.first_name,'lname':request.user.last_name,'zip':zip(date,disease,medicine)})
 
 @login_required(login_url="/index/")
 def loggedout(request):
@@ -153,5 +163,6 @@ def medication(request):
             dis1 = cursor.fetchall()
             cursor.execute("SELECT medicine FROM sympdis WHERE disid = %s",[disid])
             med1 =cursor.fetchall()
-
+            print(request.user.username)
+            cursor.execute("INSERT into presc(uid,disid,date) values(%s,%s,%s) ",[str(request.user.id),disid,str(datetime.now().date())])
         return render(request, 'remedio/medication.html', {'n':disid, 'l':dis1 , 'p':med1})

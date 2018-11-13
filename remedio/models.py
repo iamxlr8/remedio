@@ -16,6 +16,15 @@ class Dis(models.Model):
         managed = False
         db_table = 'dis'
 
+class Presc(models.Model):
+    id = models.IntegerField(primary_key=True)
+    uid = models.IntegerField()
+    disid = models.IntegerField(blank=True, null=True)
+    date = models.DateField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'presc'
 
 class Relate(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -37,7 +46,7 @@ class Symp(models.Model):
 
 
 class Sympdis(models.Model):
-    id = models.IntegerField(primary_key=True)
+    disid = models.IntegerField(primary_key=True)
     medicine = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
