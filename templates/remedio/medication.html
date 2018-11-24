@@ -9,16 +9,19 @@
 
 {% endblock %}
 {% block body_block %}
-        {{ n }}
         DISEASE:
         {% for i in l%}
         <br>
-        {{ i }}
+            {% for j in i %}
+        {{ j|upper }}
+                {% endfor %}
         {% endfor %}<br>
         MEDICINE:
         {% for i in p%}
         <br>
-            {{ i }}
+            {% for j in i %}
+            {{ j|upper }}
+                {% endfor %}
         {% endfor %}
 {% endblock %}
 </html>

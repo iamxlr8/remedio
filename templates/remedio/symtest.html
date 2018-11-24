@@ -9,12 +9,15 @@
 
 {% endblock %}
 {% block body_block %}
-        these symptoms are also there?
-        {{ n }}
+        Are these Symptoms also there?
+    <ul>
         {% for i in l%}
         <br>
-        {{ i }}
+        {% for j in i %}
+            <li>   {{ j|upper }}</li>
         {% endfor %}
+        {% endfor %}
+    </ul>
         <form method="post" action="/medication/">
             {% csrf_token %}
             <input type="hidden" id="dis" name="disease" value={{ n }}>

@@ -46,7 +46,7 @@ class Symp(models.Model):
 
 
 class Sympdis(models.Model):
-    disid = models.IntegerField(primary_key=True)
+    id = models.IntegerField(primary_key=True)
     medicine = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:

@@ -38,7 +38,7 @@ def index(request):
 
 @login_required(login_url="/index/")
 def home(request):
-	return render(request,'remedio/home.html')
+	return render(request,'remedio/home.html',{'a':request.user.username})
 
 @login_required(login_url="/index/")
 def prevpres(request):
@@ -47,11 +47,11 @@ def prevpres(request):
 	for i in info:
 		date.append(i.date)
 		dis1=Dis.objects.get(disid=i.disid)
-		med1=Sympdis.objects.get(disid=i.disid)
+		med1=Sympdis.objects.get(id=i.disid)
 		disease.append(dis1.disease)
 		medicine.append(med1.medicine)
 		print(request.user.first_name)
-	return render(request,'remedio/prevpres.html',{'fname':request.user.first_name,'lname':request.user.last_name,'zip':zip(date,disease,medicine)})
+	return render(request,'remedio/prevpres.html',{'fname':request.user.first_name,'lname':request.user.last_name,'zip':zip(date,disease,medicine),'a':request.user.username})
 
 @login_required(login_url="/index/")
 def loggedout(request):
@@ -61,7 +61,7 @@ def loggedout(request):
 @login_required(login_url="/index/")
 def loggedin(request):
     symfor=symform()
-    return render(request,'remedio/loggedin.html',{'symform':symfor})
+    return render(request,'remedio/loggedin.html',{'symform':symfor,'a':request.user.username})
 
 def signedup(request):
     if request.method=='POST':
@@ -128,7 +128,7 @@ def symtest(request):
 			with connection.cursor() as cursor:
 				cursor.execute("SELECT symptom FROM symp WHERE symid IN (SELECT symid FROM relate WHERE disid= %s )",[str(i)])
 				symp=cursor.fetchall()
-			return render(request,'remedio/symtest.html',{'n':n1,'l':symp,'buses':disses})
+			return render(request,'remedio/symtest.html',{'n':n1,'l':symp,'buses':disses,'a':request.user.username})
 	else:
         # global n
         # global diss
@@ -150,7 +150,7 @@ def symtest(request):
 				cursor.execute("SELECT symptom FROM symp WHERE symid IN (SELECT symid FROM relate WHERE disid= %s )",
                                [str(i)])
 				symp = cursor.fetchall()
-			return render(request, 'remedio/symtest.html', {'n': n1, 'l': symp, 'buses': disses})
+			return render(request, 'remedio/symtest.html', {'n': n1, 'l': symp, 'buses': disses,'a':request.user.username})
 
 @login_required(login_url="/index/")
 def medication(request):
@@ -161,8 +161,8 @@ def medication(request):
         with connection.cursor() as cursor:
             cursor.execute("SELECT disease FROM dis WHERE disid = %s ",[disid])
             dis1 = cursor.fetchall()
-            cursor.execute("SELECT medicine FROM sympdis WHERE disid = %s",[disid])
+            cursor.execute("SELECT medicine FROM sympdis WHERE id = %s",[disid])
             med1 =cursor.fetchall()
             print(request.user.username)
             cursor.execute("INSERT into presc(uid,disid,date) values(%s,%s,%s) ",[str(request.user.id),disid,str(datetime.now().date())])
-        return render(request, 'remedio/medication.html', {'n':disid, 'l':dis1 , 'p':med1})
+        return render(request, 'remedio/medication.html', {'n':disid, 'l':dis1 , 'p':med1,'a':request.user.username})

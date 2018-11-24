@@ -17,6 +17,20 @@ body {
     -webkit-font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
 }
+header {
+  position: relative;
+  height: 135px;
+  background-image: linear-gradient(#52ffb8, #4dfff3);
+
+}
+
+svg {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 10vw;
+  /* set height to pixels if you want angle to change with screen width */
+}
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Lato', sans-serif;
@@ -111,22 +125,52 @@ a.navbar-brand {
 	color: #fff !important;
 	font-weight: 900;
 	text-transform: uppercase;
+    float:right;
+    margin-bottom:-10px;
 }
 a.navbar-brand:hover {
     color: #ddd !important;
 }
 
-/* Header */
+#table-wrapper {
+  position:relative;
+}
+#table-scroll {
+  height:300px;
+  overflow:auto;
+  margin-top:20px;
+}
+#table-wrapper table {
+  width:100%;
 
-#header {	
-	background-color: #444;
-	background: url(../images/back2.jpg) no-repeat center top;
+}
+#table-wrapper table * {
+  background:#fff;
+  color:black;
+}
+#table-wrapper table thead th .text {
+  position:absolute;
+  top:-20px;
+  z-index:2;
+  height:20px;
+  width:35%;
+  border:1px solid red;
+}
+
+
+
+/* Header */
+#header {
+	background-color: #fff;
+
+	/*background: url(../images/jaijai.jpg) no-repeat;*/
 	margin-top: -20px;
-	padding-top: 150px;
+	padding-top: 15px;
 	background-attachment: relative;
 	background-position: center center;
-	height: 575px;
+	height: 400px;
 	width: 100%;
+    z-index: -1;
 	/*opacity:0.6;*/
 	
     -webkit-background-size: 100%;
@@ -189,7 +233,7 @@ h2.subtitle {
 
 /* footer */
 #footer {
-	background: #003300;
+	background: #ffac1c;
 	padding: 20px 0 5px;
 }
 
@@ -206,3 +250,100 @@ p.copyright {
     color: #fff;
 }
 
+@import url(http://fonts.googleapis.com/css?family=Raleway);
+#cssmenu,
+#cssmenu ul,
+#cssmenu ul li,
+#cssmenu ul li a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  line-height: 1;
+  display: block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#cssmenu:after,
+#cssmenu > ul:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+#cssmenu {
+  width: auto;
+  border-bottom: 3px solid #52ffb8;
+  font-family: Raleway, sans-serif;
+  line-height: 1;
+}
+#cssmenu ul {
+  background: #539987;
+}
+#cssmenu > ul > li {
+  float: left;
+}
+#cssmenu.align-center > ul {
+  font-size: 0;
+  text-align: center;
+}
+#cssmenu.align-center > ul > li {
+  display: inline-block;
+  float: none;
+}
+#cssmenu.align-right > ul > li {
+  float: right;
+}
+#cssmenu.align-right > ul > li > a {
+  margin-right: 0;
+  margin-left: -4px;
+}
+#cssmenu > ul > li > a {
+  z-index: 2;
+  padding: 18px 25px 12px 25px;
+  font-size: 15px;
+  font-weight: 400;
+  text-decoration: none;
+  color: #444444;
+  -webkit-transition: all .2s ease;
+  -moz-transition: all .2s ease;
+  -ms-transition: all .2s ease;
+  -o-transition: all .2s ease;
+  transition: all .2s ease;
+  margin-right: -4px;
+}
+#cssmenu > ul > li.active > a,
+#cssmenu > ul > li:hover > a,
+#cssmenu > ul > li > a:hover {
+  color: #ffffff;
+}
+#cssmenu > ul > li > a:after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  width: 100%;
+  height: 120%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  content: "";
+  -webkit-transition: all .2s ease;
+  -o-transition: all .2s ease;
+  transition: all .2s ease;
+  -webkit-transform: perspective(5px) rotateX(2deg);
+  -webkit-transform-origin: bottom;
+  -moz-transform: perspective(5px) rotateX(2deg);
+  -moz-transform-origin: bottom;
+  transform: perspective(5px) rotateX(2deg);
+  transform-origin: bottom;
+}
+#cssmenu > ul > li.active > a:after,
+#cssmenu > ul > li:hover > a:after,
+#cssmenu > ul > li > a:hover:after {
+  background: #52ffb8;
+}
