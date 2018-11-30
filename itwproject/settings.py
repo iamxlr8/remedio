@@ -26,7 +26,7 @@ SECRET_KEY = 'womjyl4lt##=&n0i2!(%qov3p17x$y&h+zo#ificezr+deqget'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['172.17.16.117','127.0.0.1']
+ALLOWED_HOSTS = ['172.17.16.117','127.0.0.1','192.168.43.65']
 
 
 # Application definition
@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'remedio.middleware.ipfilter',
 ]
 
 ROOT_URLCONF = 'itwproject.urls'

@@ -9,19 +9,21 @@
 
 {% endblock %}
 {% block body_block %}
-        DISEASE:
+    <div class="meddis">
+    DISEASE:
         {% for i in l%}
-        <br>
             {% for j in i %}
         {{ j|upper }}
                 {% endfor %}
         {% endfor %}<br>
         MEDICINE:
         {% for i in p%}
-        <br>
             {% for j in i %}
             {{ j|upper }}
                 {% endfor %}
         {% endfor %}
+    </div>
+    <a href="/rating/"><button>Would you like to rate us?</button></a>
 {% endblock %}
+
 </html>

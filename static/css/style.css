@@ -8,7 +8,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:400,300,700,900');
 
 body {
-  background-color: #f2f2f2;
+  background-color: #fff;
     font-family: 'Lato', sans-serif;
     font-weight: 300;
     font-size: 16px;
@@ -132,68 +132,68 @@ a.navbar-brand:hover {
     color: #ddd !important;
 }
 
-#table-wrapper {
-  position:relative;
-}
+/*#table-wrapper {*/
+  /*position:relative;*/
+/*}*/
 #table-scroll {
   height:300px;
   overflow:auto;
   margin-top:20px;
 }
-#table-wrapper table {
-  width:100%;
+/*#table-wrapper table {*/
+  /*width:100%;*/
 
-}
-#table-wrapper table * {
-  background:#fff;
-  color:black;
-}
-#table-wrapper table thead th .text {
-  position:absolute;
-  top:-20px;
-  z-index:2;
-  height:20px;
-  width:35%;
-  border:1px solid red;
-}
-
-
-
-/* Header */
-#header {
-	background-color: #fff;
-
-	/*background: url(../images/jaijai.jpg) no-repeat;*/
-	margin-top: -20px;
-	padding-top: 15px;
-	background-attachment: relative;
-	background-position: center center;
-	height: 400px;
-	width: 100%;
-    z-index: -1;
-	/*opacity:0.6;*/
-	
-    -webkit-background-size: 100%;
-    -moz-background-size: 100%;
-    -o-background-size: 100%;
-    background-size: 100%;
-
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
+/*}*/
+/*#table-wrapper table * {*/
+  /*background:#fff;*/
+  /*color:black;*/
+/*}*/
+/*#table-wrapper table thead th .text {*/
+  /*position:absolute;*/
+  /*top:-20px;*/
+  /*z-index:2;*/
+  /*height:20px;*/
+  /*width:35%;*/
+  /*border:1px solid red;*/
+/*}*/
 
 
 
-#header h1 {
-	margin-top: 60px;
-	margin-bottom: 15px;
-	color: #fff;
-	font-size: 45px;
-	font-weight: 900;
-	letter-spacing: -1px;
-}
+/*!* Header *!*/
+/*#header {*/
+	/*background-color: #fff;*/
+    /*!*position: relative;*!*/
+
+	/*!*background: url(../images/jaijai.jpg) no-repeat;*!*/
+	/*margin-top: -20px;*/
+	/*padding-top: 20px;*/
+	/*height: 400px;*/
+	/*width: 300px;*/
+    /*z-index: -1;*/
+    /*background: rgba(0,0,0,0.8);*/
+	/*!*opacity:0.6;*!*/
+	/**/
+    /*-webkit-background-size: 100%;*/
+    /*-moz-background-size: 100%;*/
+    /*-o-background-size: 100%;*/
+    /*background-size: 100%;*/
+
+    /*-webkit-background-size: cover;*/
+    /*-moz-background-size: cover;*/
+    /*-o-background-size: cover;*/
+    /*background-size: cover;*/
+/*}*/
+
+
+
+/*#header h1 {*/
+	/*margin-top: 60px;*/
+	/*margin-bottom: 15px;*/
+	/*color: #fff;*/
+	/*font-size: 45px;*/
+	/*font-weight: 900;*/
+	/*letter-spacing: -1px;*/
+/*}*/
 
 h2.subtitle {
 	color: #fff;
@@ -347,3 +347,108 @@ p.copyright {
 #cssmenu > ul > li > a:hover:after {
   background: #52ffb8;
 }
+
+
+.main{
+    height:450px;
+    width: 400px;
+    /*background: rgba(0,0,0,0.8);*/
+    position:relative;
+    left:50%;
+    transform: translate(-50%,0);
+}
+
+.main input{
+	width:100%;
+	margin-bottom: 20px;
+}
+
+.main input[type="text"],input[type="password"]{
+	border:none;
+	font-family: sans-serif;
+	border-bottom: 1px solid #000;
+	background: transparent;
+	outline:none;
+	height: 25px;
+	font-size: 15px;
+	color: #000;
+}
+
+.main input[type="submit"]{
+	outline:none;
+	border: none;
+	background: #E41A26;
+	height: 30px;
+	color:#fff;
+	font-size: 18px;
+	font-family: 'Modern Antiqua';
+	border-radius: 20px;
+}
+.main button{
+	outline:none;
+	border: none;
+	background: #E41A26;
+	height: 30px;
+	color:#fff;
+	font-size: 18px;
+	font-family: 'Modern Antiqua';
+	border-radius: 20px;
+    width:100%;
+    margin:20px 20px 20px 0;
+}
+.main button:hover{
+    cursor: pointer;
+	color:#000;
+	background-color: #fb2;
+}
+.main input[type="submit"]:hover{
+	cursor: pointer;
+	color:#000;
+	background-color: #fb2;
+}
+
+.main input[type="text"]:focus, .lform input[type="text"]:hover{
+	border-bottom: 1px solid #fb2;
+}
+
+.main input[type="password"]:focus, .lform input[type="password"]:hover{
+	border-bottom: 1px solid #fb2;
+}
+ .chunnu{
+     position: absolute;
+     top:100px;
+ }
+
+
+ .meddis{
+     font-size: large;
+     text-align: center;
+     line-height: 50px;
+     font-family: 'Modern Antiqua' ;
+     font-weight: bold;
+     text-shadow: 1px 1px #2aabd2 ;
+ }
+
+
+
+ #customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;}

@@ -7,13 +7,16 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
 
+
 {% endblock %}
 {% block body_block %}
     <form method="get" action="/loggedin/">
-      <input type="submit" value="NEW PRESCRIPTION">
+        <h3>Add a new Prescription</h3>
+      <input class="button6" type="submit" value="NEW PRESCRIPTION">
     </form>
     <form method="get" action="/prevpres/">
-      <input type="submit" value="PREVIOUS PRESCRIPTIONS">
+        <h3>See your previous Prescriptions</h3>
+      <input class="button6" type="submit" value="PREVIOUS PRESCRIPTIONS">
     </form>
 {% endblock %}
 </html>

@@ -25,8 +25,8 @@
     <form method="post" action="/symtest/">
         {% csrf_token %}
         {{ symform.as_p }}
-        <button onclick="addsym()" type="button">+</button>
-        <input type="submit" value="check">
+        <button onclick="addsym()" type="button">Add more Symptoms</button>
+        <input type="submit" value="Check">
     </form>
 {% endblock %}
 </html>

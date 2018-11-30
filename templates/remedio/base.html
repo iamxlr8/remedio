@@ -18,6 +18,7 @@
    <script src="script.js"></script>
   <!-- siimple style -->
   <link href="{% static "css/style.css" %}" rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     {% block head_block %}
     {% endblock %}
 
@@ -25,38 +26,14 @@
 
 <body>
 
-  <!-- Fixed navbar -->
-{#  <div class="navbar navbar-inverse navbar-fixed-top">#}
-{#    <div class="container">#}
-{#      <div class="navbar-header">#}
-{#        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">#}
-{#            <span class="icon-bar"></span>#}
-{#            <span class="icon-bar"></span>#}
-{#            <span class="icon-bar"></span>#}
-{#          </button>#}
-{#        <a class="navbar-brand" href="/index/">Remedio</a>#}
-{#      </div>#}
-{#      <div class="navbar-collapse collapse">#}
-{#        <ul class="nav navbar-nav navbar-right">#}
-{#          <li><a href="{% url "remedio:home" %}">{{ a }}</a></li>#}
-{#          <li><a href="{% url "remedio:home" %}">Home</a></li>#}
-{#          <li><a href="{% url "remedio:loggedout" %}">Logout</a></li>#}
-{#        </ul>#}
-{#      </div>#}
-{#      <!--/.nav-collapse -->#}
-{#    </div>#}
-{#  </div>#}
 
   <div id='cssmenu'>
 <ul>
-{#   <li class='active'><a href='#'>Home</a></li>#}
-{#   <li><a href='#'>Products</a></li>#}
-{#   <li><a href='#'>Company</a></li>#}
-{#   <li><a href='#'>Contact</a></li>#}
     <a class="navbar-brand" href="/index/">Remedio</a>
     <li class="active"><a href="{% url "remedio:home" %}">{{ a }}</a></li>
           <li><a href="{% url "remedio:home" %}">Home</a></li>
           <li><a href="{% url "remedio:loggedout" %}">Logout</a></li>
+          <li><a href="/feed/"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
 </ul>
 </div>
 
@@ -65,17 +42,23 @@
     <polygon fill="white" points="0,100 100,0 100,100"/>
   </svg>
 </header>
-  <div id="header">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4">
+{#  <div id="header">#}
+{#    <div class="container">#}
+{#      <div class="row">#}
+{#        <div class="col-lg-4">#}
+          <div class="main">
           {% block body_block %}
           {% endblock %}
-        </div>
-
-      </div>
-    </div>
-  </div>
+          </div>
+            <div class="chunnu">
+                {% block chunnu %}
+                {% endblock %}
+            </div>
+{#        </div>#}
+{##}
+{#      </div>#}
+{#    </div>#}
+{#  </div>#}
   <div id="footer">
     <div class="container">
       <div class="row">

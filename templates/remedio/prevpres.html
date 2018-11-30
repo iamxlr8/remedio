@@ -8,11 +8,16 @@
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
 {% endblock %}
 {% block body_block %}
-{{fname}}
-{{lname}}<br>
+<div class="meddis">
+    {{fname}}
+{{lname}}
+</div><br>
+    {% if error %}
+        <h3>You have no records here.</h3>
+    {% else %}
     <div id="table-wrapper">
   <div id="table-scroll">
-<table border="5">
+<table id="customers">
   <thead>
     <th>DATE</th>
     <th>DISEASE</th>
@@ -29,5 +34,6 @@
 </table>
   </div>
     </div>
+    {% endif %}
 {% endblock %}
 </html>
