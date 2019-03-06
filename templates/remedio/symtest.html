@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% extends "remedio/base.html" %}
+<html lang="en">
+{% block head_block %}
+    <meta charset="UTF-8">
+    <title>symtest</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+
+{% endblock %}
+{% block body_block %}
+    <h3>Are these Symptoms also there?</h3>
+    <ul>
+        {% for i in l%}
+        <br>
+        {% for j in i %}
+            <li>   {{ j|upper }}</li>
+        {% endfor %}
+        {% endfor %}
+    </ul>
+        <form method="post" action="/medication/">
+            {% csrf_token %}
+            <input type="hidden" id="dis" name="disease" value={{ n }}>
+            <input type="submit" value="YES">
+        </form>
+        {% if buses.has_other_pages %}
+        <div style="position:fixed;bottom:40px;right:10px">
+        <div class="pag">
+  <ul class="pagination">
+    {% if buses.has_previous %}
+      <li><a href="?page={{ buses.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in buses.paginator.page_range %}
+      {% if buses.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if buses.has_next %}
+      <li><a href="?page={{ buses.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul></div>
+  </div>
+{% endif %}
+{% endblock %}
+</html>

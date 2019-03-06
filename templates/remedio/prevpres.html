@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends "remedio/base.html" %}
+<html lang="en">
+{% block head_block %}
+    <meta charset="UTF-8">
+    <title>Previous Prescriptions</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+{% endblock %}
+{% block body_block %}
+<div class="meddis">
+    {{fname}}
+{{lname}}
+</div><br>
+    {% if error %}
+        <h3>You have no records here.</h3>
+    {% else %}
+    <div id="table-wrapper">
+  <div id="table-scroll">
+<table id="customers">
+  <thead>
+    <th>DATE</th>
+    <th>DISEASE</th>
+    <th>MEDICINE</th>
+  </thead>
+
+  {% for x,y,z in zip %}
+      <tr>
+      <td>{{ x|upper }}</td>
+      <td>{{ y|upper }}</td>
+      <td>{{ z|upper }}</td>
+    </tr>
+  {% endfor %}
+</table>
+  </div>
+    </div>
+    {% endif %}
+{% endblock %}
+</html>

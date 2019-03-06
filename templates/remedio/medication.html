@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% extends "remedio/base.html" %}
+<html lang="en">
+{% block head_block %}
+    <meta charset="UTF-8">
+    <title>symtest</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+
+{% endblock %}
+{% block body_block %}
+    <div class="meddis">
+    DISEASE:
+        {% for i in l%}
+            {% for j in i %}
+        {{ j|upper }}
+                {% endfor %}
+        {% endfor %}<br>
+        MEDICINE:
+        {% for i in p%}
+            {% for j in i %}
+            {{ j|upper }}
+                {% endfor %}
+        {% endfor %}
+    </div>
+    <a href="/rating/"><button>Would you like to rate us?</button></a>
+{% endblock %}
+
+</html>
